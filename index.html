@@ -22,34 +22,46 @@ body {
     color: #f5f1e8;
 }
 
-/* ===== 星 ===== */
+/* ===== STELLAR 星追加 ===== */
+
+body {
+    position: relative;
+}
 
 body::before {
-    content: "";
+    content:
+        "✦  ✧  ·  ⋆  ·  ✦  ·  ✧  ⋆  ·  ✦  ·  ⋆  ✧  ·  ✦  ·  ⋆  ·  ✧  ✦";
+
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    color: rgba(255,255,255,0.65);
+
+    font-size: 16px;
+    line-height: 70px;
+    letter-spacing: 18px;
+
     pointer-events: none;
-    z-index: -1;
 
-    background-image:
-        radial-gradient(circle, white 1px, transparent 1.5px),
-        radial-gradient(circle, white 1px, transparent 1.5px),
-        radial-gradient(circle, white 1px, transparent 1.5px),
-        radial-gradient(circle, white 1.5px, transparent 2px);
+    z-index: 1;
 
-    background-size:
-        90px 90px,
-        130px 130px,
-        180px 180px,
-        250px 250px;
+    overflow: hidden;
 
-    background-position:
-        10px 20px,
-        50px 80px,
-        120px 30px,
-        200px 150px;
+    animation: stars 8s ease-in-out infinite alternate;
+}
 
-    opacity: 0.5;
+@keyframes stars {
+    from {
+        opacity: 0.35;
+    }
+
+    to {
+        opacity: 0.8;
+    }
 }
 
 /* ===== ヘッダー ===== */
