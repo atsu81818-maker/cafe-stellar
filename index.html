@@ -2,28 +2,19 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAFE STELLAR</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CAFE STELLAR</title>
+
 <style>
+
+/* =========================
+   基本設定
+========================= */
+
 html {
     scroll-behavior: smooth;
-}
-#menu > div {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#menu > div:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-.hero img {
-    width: 80%;
-    max-width: 650px;
-    height: auto;
-    display: block;
-    margin: 0 auto 30px;
-    border-radius: 15px;
 }
 
 * {
@@ -32,410 +23,946 @@ html {
 
 body {
     margin: 0;
-    font-family: sans-serif;
-    background: #f5f0e8;
-    color: #333;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        sans-serif;
+
+    background: #080b18;
+    color: #f5f5fa;
 }
+
+
+/* =========================
+   星空
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+
+    background-image:
+        radial-gradient(circle, white 1px, transparent 1px),
+        radial-gradient(circle, white 1px, transparent 1px);
+
+    background-size: 90px 90px, 150px 150px;
+    background-position: 10px 20px, 60px 80px;
+
+    z-index: -1;
+}
+
+
+/* =========================
+   ヘッダー
+========================= */
 
 header {
-    padding: 20px;
-    text-align: center;
-    background: #ffffff;
-}
-
-header h1 {
-    margin: 0 0 15px;
-}
-
-nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #333;
-}
-
-.hero {
-    text-align: center;
-    padding: 100px 20px;
-    background: #ddd0bd;
-}
-
-.hero h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    font-size: 18px;
-    margin-bottom: 30px;
-}
-
-.hero a {
-    display: inline-block;
-    padding: 14px 25px;
-    background: #333;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-}
-
-section {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 70px 20px;
-}
-
-section > h2 {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-#menu > div {
-    background: white;
-    padding: 25px;
-    margin-bottom: 15px;
-    border-radius: 12px;
-    text-align: center;
-    flex: 1;
-}
-#menu {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-#menu > h2 {
-    width: 100%;
-}
-
-#menu h3 {
-    margin-top: 0;
-}
-
-#about {
-    text-align: center;
-}
-
-#access {
-    text-align: center;
-}
-
-footer {
-    text-align: center;
-    padding: 30px;
-    background: #333;
-    color: white;
-}
-
-@media (max-width: 600px) {
-
-    .hero {
-        padding: 70px 20px;
-    }
-
-    .hero h2 {
-        font-size: 28px;
-    }
-
-    nav a {
-        margin: 0 5px;
-    }
-
-}
-/* ===== CAFE STELLAR デザイン ===== */
-
-body {
-    background: #f7f3ed;
-    color: #3b342e;
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
-        "Hiragino Kaku Gothic ProN", sans-serif;
-}
-
-/* ヘッダー */
-header {
-    background: rgba(255, 255, 255, 0.96);
-    padding: 25px 20px;
-    box-shadow: 0 2px 15px rgba(80, 60, 40, 0.08);
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
+
+    padding: 18px 30px;
+
+    background: rgba(8, 11, 24, 0.85);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+
+    text-align: center;
 }
 
-header h1 {
-    font-size: 28px;
-    letter-spacing: 5px;
-    color: #4a3b32;
+
+/* ロゴ */
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    text-decoration: none;
+    color: white;
+
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 4px;
 }
 
-/* ナビゲーション */
+.logo-star {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid white;
+    border-radius: 50%;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   ナビゲーション
+========================= */
+
+nav {
+    margin-top: 12px;
+
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+}
+
 nav a {
-    color: #6b584a;
-    font-weight: 600;
-    letter-spacing: 1px;
+    color: #ddd;
+    text-decoration: none;
+
+    font-size: 13px;
+    letter-spacing: 2px;
+
     transition: 0.3s;
 }
 
 nav a:hover {
-    color: #a97855;
+    color: white;
+    transform: translateY(-2px);
 }
 
-/* ヒーロー */
+
+/* =========================
+   ヒーロー
+========================= */
+
 .hero {
-    background: linear-gradient(
-        to bottom,
-        #e9ded2,
-        #f7f3ed
-    );
-    padding: 80px 20px;
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            rgba(5, 7, 18, 0.35),
+            rgba(5, 7, 18, 0.85)
+        ),
+        url("IMG_2842.jpeg");
+
+    background-size: cover;
+    background-position: center;
 }
 
-.hero img {
-    width: 90%;
-    max-width: 850px;
-    max-height: 500px;
-    object-fit: cover;
-    border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(70, 50, 30, 0.18);
+.hero::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            transparent 50%,
+            #080b18 100%
+        );
 }
 
-.hero h2 {
-    font-size: 38px;
-    color: #44372f;
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    padding: 30px;
+}
+
+
+/* 大きなロゴ */
+
+.hero-logo {
+    font-size: clamp(48px, 10vw, 110px);
+
+    font-weight: 700;
+    letter-spacing: 12px;
+
+    margin: 0;
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,0.4),
+        0 0 50px rgba(150,160,255,0.3);
+}
+
+.hero-subtitle {
+    font-size: 16px;
+
+    letter-spacing: 5px;
+
+    margin: 15px 0 35px;
+
+    color: #ddd;
+}
+
+.hero-button {
+    display: inline-block;
+
+    padding: 15px 30px;
+
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 50px;
+
+    color: white;
+    text-decoration: none;
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.3s;
+}
+
+.hero-button:hover {
+    background: white;
+    color: #080b18;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   セクション
+========================= */
+
+section {
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 100px 25px;
+}
+
+.section-title {
+    text-align: center;
+
+    font-size: 30px;
+
+    letter-spacing: 6px;
+
+    margin-bottom: 50px;
+}
+
+.section-title span {
+    display: block;
+
+    margin-top: 10px;
+
+    font-size: 11px;
+
     letter-spacing: 3px;
+
+    color: #9da4c9;
 }
 
-.hero p {
-    color: #76675c;
+
+/* =========================
+   メニュー
+========================= */
+
+#menu {
+    max-width: 1100px;
+}
+
+.menu-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.menu-card {
+    padding: 30px 20px;
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.09),
+            rgba(255,255,255,0.025)
+        );
+
+    backdrop-filter: blur(15px);
+
+    text-align: center;
+
+    transition: 0.4s;
+}
+
+.menu-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(255,255,255,0.35);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.35);
+}
+
+.menu-icon {
+    font-size: 38px;
+
+    margin-bottom: 15px;
+}
+
+.menu-card h3 {
+    margin: 10px 0;
+
+    font-size: 20px;
+
+    letter-spacing: 2px;
+}
+
+.menu-card p {
+    margin: 8px 0;
+
+    color: #bfc3d5;
+
+    font-size: 14px;
+}
+
+.price {
+    margin-top: 18px !important;
+
+    color: white !important;
+
+    font-size: 18px !important;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-box {
+    max-width: 750px;
+
+    margin: auto;
+
+    padding: 45px 30px;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,0.05);
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    text-align: center;
+
     line-height: 2;
 }
 
-/* ボタン */
-.hero a {
-    background: #6b4f3b;
-    padding: 15px 30px;
-    border-radius: 30px;
-    box-shadow: 0 6px 15px rgba(70, 50, 30, 0.2);
-    transition: 0.3s;
+.about-box p {
+    color: #d5d7e4;
 }
 
-.hero a:hover {
-    background: #8a654c;
-    transform: translateY(-3px);
-}
 
-/* セクション */
-section {
-    max-width: 950px;
-    margin: 0 auto;
-    padding: 80px 20px;
-}
+/* =========================
+   ACCESS
+========================= */
 
-section > h2 {
-    color: #4b3b31;
-    font-size: 30px;
-    letter-spacing: 4px;
-}
+.access-container {
+    display: grid;
 
-section > h2::after {
-    content: "";
-    display: block;
-    width: 45px;
-    height: 3px;
-    background: #b48a6b;
-    margin: 15px auto 0;
-}
+    grid-template-columns:
+        1fr 1fr;
 
-/* メニュー */
-#menu {
-    display: flex;
-    flex-wrap: wrap;
     gap: 25px;
+
+    align-items: stretch;
 }
 
-#menu > h2 {
+.map {
+    min-height: 350px;
+
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #151b35,
+            #0c1022
+        );
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+.map-inner {
     width: 100%;
+    height: 100%;
+
+    min-height: 290px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
 }
 
-#menu > div {
-    background: #ffffff;
-    padding: 28px;
-    margin-bottom: 0;
-    border-radius: 18px;
-    text-align: left;
-    flex: 1 1 250px;
-    box-shadow: 0 8px 25px rgba(70, 50, 30, 0.08);
-    border: 1px solid #eee5dc;
-    transition: 0.3s;
+.map-icon {
+    font-size: 55px;
+
+    margin-bottom: 15px;
 }
 
-#menu > div:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 30px rgba(70, 50, 30, 0.14);
+.map-inner h3 {
+    margin: 5px;
+
+    letter-spacing: 2px;
 }
 
-#menu h3 {
-    color: #594337;
-    font-size: 20px;
+.map-inner p {
+    color: #bfc3d5;
+    font-size: 14px;
+    line-height: 1.8;
 }
 
-#menu p {
-    color: #76675c;
-}
-
-/* ABOUT */
-#about {
-    background: #eee4d8;
-    max-width: none;
-    text-align: center;
-}
-
-#about p {
-    line-height: 2.2;
-    color: #66584e;
-}
-
-/* ACCESS */
-#access {
-    text-align: center;
-}
-
-/* CONTACT */
-#contact {
-    text-align: center;
-}
-
-#contact a {
+.map-link {
     display: inline-block;
+
     margin-top: 15px;
-    padding: 13px 28px;
-    background: #6b4f3b;
-    color: white;
-    text-decoration: none;
+
+    padding: 10px 20px;
+
+    border: 1px solid rgba(255,255,255,0.3);
+
     border-radius: 30px;
+
+    color: white;
+
+    text-decoration: none;
+}
+
+.access-info {
+    padding: 35px;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,0.05);
+
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.access-info h3 {
+    margin-top: 0;
+
+    letter-spacing: 2px;
+}
+
+.access-info p {
+    line-height: 2;
+
+    color: #d0d3df;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-box {
+    text-align: center;
+
+    padding: 45px 20px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(100,110,180,0.18),
+            rgba(255,255,255,0.04)
+        );
+
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+.contact-button {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 14px 28px;
+
+    background: white;
+
+    color: #080b18;
+
+    border-radius: 40px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
     transition: 0.3s;
 }
 
-#contact a:hover {
-    background: #8a654c;
-    transform: translateY(-3px);
+.contact-button:hover {
+    transform: scale(1.05);
 }
 
-/* フッター */
+
+/* =========================
+   フッター
+========================= */
+
 footer {
-    background: #40342d;
-    color: #f5eee7;
-    padding: 35px 20px;
-    letter-spacing: 1px;
+    padding: 40px 20px;
+
+    text-align: center;
+
+    background: #050711;
+
+    color: #888;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
 }
 
-/* スマホ */
-@media (max-width: 600px) {
 
-    header h1 {
-        font-size: 23px;
+/* =========================
+   スクロール表示
+========================= */
+
+.fade-in {
+    opacity: 0;
+
+    transform: translateY(40px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================
+   スマホ
+========================= */
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 15px 12px;
+    }
+
+    .logo {
+        font-size: 19px;
         letter-spacing: 3px;
     }
 
+    nav {
+        gap: 12px;
+
+        flex-wrap: wrap;
+    }
+
     nav a {
-        margin: 0 5px;
-        font-size: 13px;
+        font-size: 11px;
+        letter-spacing: 1px;
     }
 
     .hero {
-        padding: 50px 15px;
+        min-height: calc(100vh - 100px);
+
+        background-position: center;
     }
 
-    .hero h2 {
-        font-size: 27px;
+    .hero-logo {
+        letter-spacing: 7px;
     }
 
-    .hero img {
-        width: 100%;
-        border-radius: 15px;
+    .hero-subtitle {
+        font-size: 12px;
+        letter-spacing: 3px;
     }
 
     section {
-        padding: 55px 15px;
+        padding: 70px 18px;
     }
 
-    section > h2 {
+    .section-title {
         font-size: 25px;
     }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-card {
+        padding: 25px;
+    }
+
+    .access-container {
+        grid-template-columns: 1fr;
+    }
+
+    .map {
+        min-height: 280px;
+    }
+
 }
+
+
+/* =========================
+   さらに小さいスマホ
+========================= */
+
+@media (max-width: 420px) {
+
+    nav {
+        gap: 8px;
+    }
+
+    nav a {
+        font-size: 10px;
+    }
+
+    .hero-logo {
+        font-size: 43px;
+        letter-spacing: 5px;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-    <header>
-        <h1>CAFE STELLAR</h1>
 
-       <nav>
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<a href="#top" class="logo">
+    <span class="logo-star">✦</span>
+    CAFE STELLAR
+</a>
+
+<nav>
     <a href="#menu">MENU</a>
     <a href="#about">ABOUT</a>
     <a href="#access">ACCESS</a>
     <a href="#contact">CONTACT</a>
 </nav>
-    </header>
 
-    <main>
+</header>
 
-        <section class="hero">
-<img src="IMG_2842.jpeg"alt="CAFE STELLARの店内">
-            <h2>特別な一杯を、あなたの日常に。</h2>
-            <p>ゆっくり過ごせる小さなカフェ。</p>
-            <a href="#menu">メニューを見る</a>
-        </section>
 
-        <section id="menu">
-            <h2>MENU</h2>
+<main id="top">
 
-            <div>
-                <h3>☕ Coffee</h3>
-                <p>こだわりのコーヒー</p>
-                <p>¥450</p>
-            </div>
 
-            <div>
-                <h3>🍰 Cake</h3>
-                <p>手作りチーズケーキ</p>
-                <p>¥550</p>
-            </div>
+<!-- =========================
+     HERO
+========================= -->
 
-            <div>
-                <h3>🥤 Drink</h3>
-                <p>季節のドリンク</p>
-                <p>¥500</p>
-            </div>
-        </section>
+<section class="hero">
 
-        <section id="about">
-            <h2>ABOUT</h2>
-            <p>
-                CAFE STELLARは、
-                「少しだけ特別な時間」を楽しめるカフェです。
-            </p>
-        </section>
+<div class="hero-content">
 
-        <section id="access">
-            <h2>ACCESS</h2>
-            <p>東京都○○区○○1-2-3</p>
-            <p>営業時間：10:00〜19:00</p>
-        </section>
-<section id="contact">
-    <h2>CONTACT</h2>
-    <p>ご予約・お問い合わせはこちら</p>
+    <p class="hero-subtitle">
+        SPECIAL TIME FOR YOU
+    </p>
 
-    <a href="mailto:example@example.com">
-        お問い合わせ
+    <h1 class="hero-logo">
+        STELLAR
+    </h1>
+
+    <p class="hero-subtitle">
+        A SMALL CAFE IN THE NIGHT
+    </p>
+
+    <a href="#menu" class="hero-button">
+        メニューを見る ↓
     </a>
+
+</div>
+
 </section>
 
-    </main>
 
-    <footer>
-        <p>&copy; CAFE STELLAR</p>
-    </footer>
+<!-- =========================
+     MENU
+========================= -->
+
+<section id="menu" class="fade-in">
+
+<h2 class="section-title">
+    MENU
+    <span>おすすめメニュー</span>
+</h2>
+
+
+<div class="menu-grid">
+
+
+<div class="menu-card">
+
+    <div class="menu-icon">☕</div>
+
+    <h3>Coffee</h3>
+
+    <p>こだわりのコーヒー</p>
+
+    <p class="price">¥450</p>
+
+</div>
+
+
+<div class="menu-card">
+
+    <div class="menu-icon">🍰</div>
+
+    <h3>Cake</h3>
+
+    <p>手作りチーズケーキ</p>
+
+    <p class="price">¥550</p>
+
+</div>
+
+
+<div class="menu-card">
+
+    <div class="menu-icon">🥤</div>
+
+    <h3>Drink</h3>
+
+    <p>季節のドリンク</p>
+
+    <p class="price">¥500</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about" class="fade-in">
+
+<h2 class="section-title">
+    ABOUT
+    <span>CAFE STELLARについて</span>
+</h2>
+
+<div class="about-box">
+
+<p>
+    CAFE STELLARは、<br>
+    「少しだけ特別な時間」を楽しめるカフェです。
+</p>
+
+<p>
+    ゆっくり過ごしたい日も、<br>
+    誰かと話したい日も。<br>
+    あなたの日常に、小さな星のような時間を。
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     ACCESS
+========================= -->
+
+<section id="access" class="fade-in">
+
+<h2 class="section-title">
+    ACCESS
+    <span>店舗へのアクセス</span>
+</h2>
+
+
+<div class="access-container">
+
+
+<div class="map">
+
+<div class="map-inner">
+
+    <div class="map-icon">📍</div>
+
+    <h3>CAFE STELLAR</h3>
+
+    <p>
+        東京都〇〇区〇〇1-2-3
+    </p>
+
+    <a
+        class="map-link"
+        href="https://www.google.com/maps/search/?api=1&query=東京都〇〇区〇〇1-2-3"
+        target="_blank">
+        Google Mapsで見る
+    </a>
+
+</div>
+
+</div>
+
+
+<div class="access-info">
+
+<h3>ACCESS</h3>
+
+<p>
+    📍 東京都〇〇区〇〇1-2-3
+</p>
+
+<p>
+    🚃 最寄り駅から徒歩5分
+</p>
+
+<p>
+    🕙 営業時間<br>
+    10:00〜19:00
+</p>
+
+<p>
+    定休日：水曜日
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact" class="fade-in">
+
+<h2 class="section-title">
+    CONTACT
+    <span>ご予約・お問い合わせ</span>
+</h2>
+
+<div class="contact-box">
+
+<p>
+    ご予約・お問い合わせはこちら
+</p>
+
+<a
+    class="contact-button"
+    href="mailto:example@example.com">
+    ✉ お問い合わせ
+</a>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<p>© CAFE STELLAR</p>
+
+<p>
+    A LITTLE STAR IN YOUR DAILY LIFE
+</p>
+
+</footer>
+
+
+<!-- =========================
+     JavaScript
+========================= -->
+
+<script>
+
+const targets = document.querySelectorAll(".fade-in");
+
+const observer = new IntersectionObserver(
+    (entries) => {
+
+        entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("show");
+
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.15
+    }
+);
+
+
+targets.forEach((target) => {
+
+    observer.observe(target);
+
+});
+
+</script>
+
 
 </body>
-
 </html>
