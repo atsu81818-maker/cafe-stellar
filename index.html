@@ -429,6 +429,30 @@ footer {
 .menu-card img:hover {
     transform: scale(1.03);
 }
+    /* ===== スクロール表示 ===== */
+
+section.fade {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+section.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 </style>
 </head>
 
@@ -577,6 +601,23 @@ footer {
 <footer>
     <p>&copy; CAFE STELLAR</p>
 </footer>
+<script>
+const sections = document.querySelectorAll("section");
 
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+sections.forEach((section) => {
+    section.classList.add("fade");
+    observer.observe(section);
+});
+</script>
 </body>
 </html>
