@@ -1917,15 +1917,9 @@ class="contact-button fade-up">
      BGM
 ===================================================== -->
 
-<audio id="bgm" loop>
-
-<source
-src="birthday.mp3"
-type="audio/mpeg">
-
+<audio id="bgm" loop preload="auto">
+    <source src="./birthday.mp3" type="audio/mpeg">
 </audio>
-
-
 <button
 class="bgm-button"
 id="bgmButton"
@@ -2045,46 +2039,35 @@ fadeElements.forEach(
    BGM
 ===================================================== */
 
-const bgm =
-    document.getElementById("bgm");
-
-const bgmButton =
-    document.getElementById("bgmButton");
-
+const bgm = document.getElementById("bgm");
+const bgmButton = document.getElementById("bgmButton");
 
 let playing = false;
-
 
 function toggleBGM() {
 
     if (playing) {
 
         bgm.pause();
-
         bgmButton.textContent = "♪";
-
         playing = false;
 
     } else {
 
-        bgm.play()
-            .then(function() {
+        bgm.volume = 0.5;
 
-                bgmButton.textContent = "♫";
+        bgm.play().then(function() {
 
-                playing = true;
+            bgmButton.textContent = "♫";
+            playing = true;
 
-            })
-            .catch(function() {
+        }).catch(function(error) {
 
-                alert(
-                    "BGMを再生するには、もう一度ボタンを押してください。"
-                );
+            console.log("BGM再生エラー:", error);
 
-            });
+        });
 
     }
-
 }
 
 
