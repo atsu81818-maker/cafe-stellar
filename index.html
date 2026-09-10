@@ -4,9 +4,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CAFE STELLAR</title>
+
+<title>CAFE STELLAR | 星空のような特別な時間</title>
+
+<meta name="description"
+content="CAFE STELLAR。星空のような特別な時間を楽しめるカフェです。">
 
 <style>
+
+/* =====================================================
+   基本設定
+===================================================== */
+
 html {
     scroll-behavior: smooth;
 }
@@ -17,147 +26,330 @@ html {
 
 body {
     margin: 0;
-    font-family: Georgia, "Times New Roman", serif;
-    background: #080b14;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        "Yu Mincho",
+        "Hiragino Mincho ProN",
+        serif;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(70,80,140,0.12), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(100,80,150,0.10), transparent 30%),
+        #050711;
+
     color: #f5f1e8;
+
+    overflow-x: hidden;
 }
 
-/* ===== STELLAR 星空 ===== */
+/* =====================================================
+   星
+===================================================== */
 
-body {
-    position: relative;
-}
-
-body::before {
+body::before,
+body::after {
     content: "";
     position: fixed;
     inset: 0;
 
     pointer-events: none;
-    z-index: 1;
+
+    z-index: -1;
+}
+
+body::before {
 
     background-image:
         radial-gradient(circle, white 1px, transparent 1.5px),
+        radial-gradient(circle, white 1px, transparent 1.5px),
+        radial-gradient(circle, white 1.2px, transparent 1.7px),
         radial-gradient(circle, white 1.5px, transparent 2px),
-        radial-gradient(circle, white 0.8px, transparent 1.3px),
-        radial-gradient(circle, white 2px, transparent 2.5px);
+        radial-gradient(circle, #dce5ff 1px, transparent 1.5px);
 
     background-size:
-        90px 90px,
+        70px 70px,
+        110px 110px,
         150px 150px,
         210px 210px,
-        320px 320px;
+        270px 270px;
 
     background-position:
         10px 20px,
-        60px 100px,
-        130px 40px,
-        200px 160px;
+        50px 80px,
+        120px 30px,
+        200px 150px,
+        30px 120px;
 
-    opacity: 0.55;
+    opacity: 0.45;
 
-    animation: stars 5s ease-in-out infinite alternate;
+    animation: stars 10s ease-in-out infinite alternate;
 }
 
 body::after {
-    content: "✦     ✧          ·       ⋆             ✦       ·          ✧       ⋆";
 
-    position: fixed;
-    inset: 0;
+    background-image:
+        radial-gradient(circle, white 1px, transparent 2px),
+        radial-gradient(circle, white 1.5px, transparent 2px),
+        radial-gradient(circle, #b8c8ff 1px, transparent 2px);
 
-    pointer-events: none;
-    z-index: 1;
+    background-size:
+        95px 95px,
+        180px 180px,
+        320px 320px;
 
-    color: white;
-    font-size: 14px;
-    line-height: 110px;
-    letter-spacing: 30px;
+    background-position:
+        25px 50px,
+        80px 170px,
+        180px 40px;
 
     opacity: 0.35;
 
-    animation: sparkle 4s ease-in-out infinite alternate;
+    animation: stars2 14s ease-in-out infinite alternate;
 }
 
 @keyframes stars {
     from {
-        opacity: 0.3;
+        opacity: 0.25;
+        transform: translateY(0);
     }
 
     to {
-        opacity: 0.65;
+        opacity: 0.7;
+        transform: translateY(-8px);
     }
 }
 
-@keyframes sparkle {
+@keyframes stars2 {
     from {
         opacity: 0.2;
-        transform: scale(1);
     }
 
     to {
-        opacity: 0.75;
-        transform: scale(1.03);
+        opacity: 0.55;
     }
 }
 
-/* ===== ヘッダー ===== */
+/* =====================================================
+   共通
+===================================================== */
 
-header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-
-    padding: 20px;
-    text-align: center;
-
-    background: rgba(3, 5, 12, 0.96);
-    backdrop-filter: blur(10px);
-
-    border-bottom: 1px solid rgba(241,223,173,0.25);
+a {
+    color: inherit;
 }
 
-header h1 {
-    margin: 0 0 15px;
-    font-size: 34px;
-    letter-spacing: 8px;
+section {
+    max-width: 1150px;
+    margin: auto;
+    padding: 110px 25px;
+}
+
+.section-title {
+    text-align: center;
+
+    font-size: clamp(28px, 4vw, 40px);
+
     font-weight: normal;
+
+    letter-spacing: 8px;
+
+    margin: 0 0 60px;
+
+    color: #f3ead4;
+}
+
+.section-title span {
+    display: block;
+
+    margin-top: 16px;
+
+    font-size: 15px;
+
+    letter-spacing: 5px;
+
+    color: #d7c58f;
+}
+
+/* =====================================================
+   ヘッダー
+===================================================== */
+
+header {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    z-index: 100;
+
+    padding: 18px 30px;
+
+    background:
+        rgba(4,6,15,0.82);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.12);
+
+    transition: 0.4s;
+}
+
+.header-inner {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+/* ロゴ */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    text-decoration: none;
+}
+
+.logo-star {
+
+    font-size: 26px;
+
+    color: #e8d49c;
+
+    text-shadow:
+        0 0 10px rgba(255,220,140,0.8);
+}
+
+.logo-text {
+
+    font-size: 22px;
+
+    letter-spacing: 5px;
+
+    color: #f6edda;
+}
+
+/* ナビ */
+
+nav {
+
+    display: flex;
+
+    gap: 24px;
 }
 
 nav a {
-    margin: 0 12px;
-    color: #e8dfc8;
+
     text-decoration: none;
-    font-size: 14px;
+
+    font-size: 12px;
+
     letter-spacing: 2px;
+
+    color: #ded8c9;
+
+    position: relative;
+
+    padding-bottom: 5px;
+
+    transition: 0.3s;
+}
+
+nav a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 0;
+
+    height: 1px;
+
+    background: #d8c48e;
+
+    transition: 0.3s;
 }
 
 nav a:hover {
+
     color: white;
 }
 
-/* ===== メイン ===== */
+nav a:hover::after {
 
-main {
-    overflow: hidden;
+    left: 0;
+
+    width: 100%;
 }
 
-/* ===== ヒーロー ===== */
+/* スマホボタン */
+
+.menu-button {
+
+    display: none;
+
+    border: 1px solid rgba(255,255,255,0.4);
+
+    background: rgba(255,255,255,0.05);
+
+    color: white;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    font-size: 20px;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero {
+
     position: relative;
-    min-height: 75vh;
+
+    height: 100vh;
+
+    min-height: 650px;
+
+    max-width: none;
+
+    padding: 0;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
 
-    background: #05070e;
+    overflow: hidden;
 }
 
 .hero img {
+
     position: absolute;
+
     inset: 0;
 
     width: 100%;
@@ -166,377 +358,79 @@ main {
     object-fit: cover;
 
     opacity: 0.55;
+
+    transform: scale(1.03);
+
+    animation: heroZoom 12s ease-out forwards;
 }
 
-.hero::after {
+@keyframes heroZoom {
+
+    from {
+        transform: scale(1.08);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.hero::before {
+
     content: "";
+
     position: absolute;
+
     inset: 0;
 
     background:
-        linear-gradient(
-            to bottom,
-            rgba(3,5,12,0.2),
-            rgba(3,5,12,0.8)
+        radial-gradient(
+            circle at center,
+            transparent 0%,
+            rgba(2,4,12,0.25) 45%,
+            rgba(2,4,12,0.88) 100%
         );
+
+    z-index: 1;
+}
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 180px;
+
+    background:
+        linear-gradient(
+            transparent,
+            #050711
+        );
+
+    z-index: 2;
 }
 
 .hero-content {
+
     position: relative;
-    z-index: 2;
-    padding: 80px 20px;
+
+    z-index: 5;
+
+    padding: 30px;
+
+    animation: heroText 1.5s ease forwards;
 }
 
-.hero h2 {
-    margin: 0 0 20px;
+@keyframes heroText {
 
-    font-size: clamp(40px, 8vw, 80px);
-    letter-spacing: 12px;
-    font-weight: normal;
-
-    text-shadow:
-        0 0 15px rgba(255,255,255,0.4),
-        0 0 40px rgba(150,170,255,0.3);
-}
-
-.hero p {
-    font-size: 18px;
-    letter-spacing: 4px;
-    margin-bottom: 35px;
-}
-
-.hero a {
-    display: inline-block;
-
-    padding: 14px 30px;
-
-    border: 1px solid rgba(255,255,255,0.6);
-    border-radius: 30px;
-
-    color: white;
-    text-decoration: none;
-
-    letter-spacing: 3px;
-
-    background: rgba(255,255,255,0.08);
-
-    transition: 0.3s;
-}
-
-.hero a:hover {
-    background: white;
-    color: #080b14;
-}
-
-/* ===== セクション ===== */
-
-section {
-    max-width: 1100px;
-    margin: auto;
-    padding: 50px 20px;
-}
-
-section > h2 {
-    text-align: center;
-    font-size: 32px;
-    letter-spacing: 6px;
-    font-weight: normal;
-    margin-bottom: 30px;
-}
-
-section > h2::after {
-    content: "✦";
-    display: block;
-    margin-top: 15px;
-    font-size: 15px;
-}
-
-/* ===== メニュー ===== */
-
-#menu {
-    background: rgba(255,255,255,0.03);
-}
-
-.menu-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-}
-
-.menu-card {
-    padding: 35px 25px;
-
-    text-align: center;
-
-    background: rgba(255,255,255,0.06);
-
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 15px;
-
-    transition: 0.3s;
-    
-    box-shadow: 0 10px 35px rgba(0,0,0,0.35);
-    position: relative;
-overflow: hidden;
-}
-.menu-card::after {
-    content: "✦";
-    position: absolute;
-    top: 15px;
-    right: 18px;
-    font-size: 14px;
-    color: rgba(255,255,255,0.7);
-    animation: menuStar 3s ease-in-out infinite;
-}
-
-@keyframes menuStar {
-    0%, 100% {
-        opacity: 0.3;
-        transform: scale(0.8);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.3);
-    }
-}
-.menu-card:hover {
-    transform: translateY(-8px);
-    background: rgba(255,255,255,0.1);
-}
-
-.menu-card h3 {
-    font-size: 21px;
-    letter-spacing: 3px;
-}
-
-.menu-card p {
-    font-family: sans-serif;
-    color: #c8c4ba;
-}
- .menu-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 15px;
-}   
-
-.price {
-    font-size: 18px;
-    color: #f1dfad;
-}
-
-/* ===== 写真 ===== */
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.gallery img {
-    width: 100%;
-    height: 330px;
-box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-transition: 0.5s;
-    object-fit: cover;
-
-    border-radius: 15px;
-
-    filter: brightness(0.82);
-
-    transition: 0.5s;
-}
-
-.gallery img:hover {
-    transform: scale(1.02);
-    filter: brightness(1);
-}
-
-.gallery .large {
-    grid-column: span 2;
-    height: 500px;
-}
-
-/* ===== ABOUT ===== */
-
-#about {
-    text-align: center;
-}
-
-.about-text {
-    max-width: 700px;
-    margin: auto;
-
-    font-family: sans-serif;
-    line-height: 2.2;
-
-    color: #d4d0c6;
-}
-
-/* ===== ACCESS ===== */
-
-.access-box {
-    max-width: 700px;
-    margin: auto;
-
-    padding: 35px;
-
-    text-align: center;
-
-    background: rgba(255,255,255,0.06);
-
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 15px;
-}
-
-.access-box p {
-    font-family: sans-serif;
-    line-height: 2;
-}
-
-/* ===== CONTACT ===== */
-
-.contact {
-    text-align: center;
-}
-
-.contact a {
-    display: inline-block;
-
-    padding: 15px 35px;
-
-    border: 1px solid #d8c48e;
-    border-radius: 30px;
-
-    color: #f1dfad;
-    text-decoration: none;
-
-    letter-spacing: 2px;
-
-    transition: 0.3s;
-}
-
-.contact a:hover {
-    background: #f1dfad;
-    color: #080b14;
-}
-
-/* ===== フッター ===== */
-
-footer {
-    padding: 40px 20px;
-
-    text-align: center;
-
-    background: #03050a;
-
-    color: #999;
-
-    font-size: 13px;
-    letter-spacing: 2px;
-}
-
-/* ===== スマホ ===== */
-
-@media (max-width: 700px) {
-
-    header h1 {
-        font-size: 25px;
-        letter-spacing: 5px;
-    }
-nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-nav a {
-    margin: 0 4px;
-    font-size: 10px;
-}
-    nav a {
-        margin: 0 5px;
-        font-size: 11px;
-    }
-
-    .hero {
-        min-height: 65vh;
-    }
-
-    .hero h2 {
-        letter-spacing: 6px;
-    }
-
-    .hero p {
-        font-size: 14px;
-        letter-spacing: 2px;
-    }
-
-    section {
-        padding: 65px 15px;
-    }
-
-    .menu-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery .large {
-        grid-column: span 1;
-        height: 350px;
-    }
-
-    .gallery img {
-        height: 260px;
-    }
-    .menu-card img {
-    height: 200px;
-}
-}
-    .menu-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    display: block;
-}
-.menu-card img:hover {
-    transform: scale(1.03);
-}
-    .stellar-map {
-    height: 280px;
-}
-
-.map-shop {
-    left: 20%;
-}
-
-.map-station {
-    left: 65%;
-}
-    /* ===== スクロール表示 ===== */
-
-section.fade {
-    opacity: 0;
-    transform: translateY(35px);
-    transition: opacity 1s ease, transform 1s ease;
-}
-
-section.fade.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-@keyframes fadeUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(25px);
     }
 
     to {
@@ -544,423 +438,1684 @@ section.fade.show {
         transform: translateY(0);
     }
 }
-    /* ===== STELLAR MAP ===== */
 
-.stellar-map {
+.hero-small {
+
+    font-size: 13px;
+
+    letter-spacing: 7px;
+
+    color: #dfcf9d;
+
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+
+    margin: 0;
+
+    font-size: clamp(55px, 12vw, 125px);
+
+    font-weight: normal;
+
+    letter-spacing: 18px;
+
+    color: #fff;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.35),
+        0 0 35px rgba(150,170,255,0.35),
+        0 0 70px rgba(130,150,255,0.2);
+}
+
+.hero-line {
+
+    width: 80px;
+
+    height: 1px;
+
+    background: #d8c48e;
+
+    margin: 25px auto;
+}
+
+.hero p {
+
+    margin: 0 0 35px;
+
+    font-size: 17px;
+
+    letter-spacing: 5px;
+
+    color: #eee8db;
+}
+
+.hero-button {
+
+    display: inline-block;
+
+    padding: 16px 38px;
+
+    border: 1px solid rgba(230,215,170,0.7);
+
+    border-radius: 40px;
+
+    text-decoration: none;
+
+    letter-spacing: 3px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(5px);
+
+    transition: 0.35s;
+}
+
+.hero-button:hover {
+
+    background: #eee3c4;
+
+    color: #050711;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* 下へ */
+
+.scroll-down {
+
+    position: absolute;
+
+    z-index: 6;
+
+    bottom: 30px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: rgba(255,255,255,0.65);
+}
+
+.scroll-down::after {
+
+    content: "↓";
+
+    display: block;
+
+    text-align: center;
+
+    font-size: 18px;
+
+    margin-top: 7px;
+}
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.intro {
+
+    text-align: center;
+
+    max-width: 850px;
+}
+
+.intro-lead {
+
+    font-size: clamp(20px, 3vw, 28px);
+
+    letter-spacing: 4px;
+
+    line-height: 2;
+
+    color: #eee7d8;
+
+    margin-bottom: 30px;
+}
+
+.intro-text {
+
+    font-family: sans-serif;
+
+    line-height: 2.2;
+
+    color: #bdb9b0;
+
+    font-size: 14px;
+}
+
+/* =====================================================
+   MENU
+===================================================== */
+
+#menu {
+
+    max-width: none;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.025),
+            rgba(255,255,255,0.01)
+        );
+
+    border-top:
+        1px solid rgba(255,255,255,0.06);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.06);
+}
+
+.menu-inner {
+
+    max-width: 1150px;
+
+    margin: auto;
+}
+
+.menu-subtitle {
+
+    text-align: center;
+
+    color: #aaa69d;
+
+    font-family: sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    margin-top: -35px;
+
+    margin-bottom: 50px;
+}
+
+.menu-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.menu-card {
+
     position: relative;
-    width: 100%;
-    height: 350px;
-    margin-top: 30px;
+
+    padding: 42px 25px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.09),
+            rgba(255,255,255,0.025)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.13);
+
+    border-radius: 18px;
 
     overflow: hidden;
 
-    background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.5) 1px, transparent 2px),
-        radial-gradient(circle at 70% 30%, rgba(255,255,255,0.4) 1px, transparent 2px),
-        radial-gradient(circle at 40% 80%, rgba(255,255,255,0.5) 1px, transparent 2px),
-        #10182c;
-
-    background-size: 100px 100px;
-
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 15px;
+    transition: 0.4s;
 }
 
-/* 道路 */
+.menu-card::before {
 
-.map-road {
-    position: absolute;
-    background: rgba(255,255,255,0.12);
-}
+    content: "✦";
 
-.road1 {
-    width: 120%;
-    height: 45px;
-    top: 45%;
-    left: -10%;
-    transform: rotate(-12deg);
-}
-
-.road2 {
-    width: 45px;
-    height: 120%;
-    top: -10%;
-    left: 55%;
-    transform: rotate(18deg);
-}
-
-.road3 {
-    width: 100%;
-    height: 25px;
-    top: 20%;
-    left: 0;
-    transform: rotate(25deg);
-}
-
-/* カフェ */
-
-.map-shop {
     position: absolute;
 
-    top: 48%;
-    left: 30%;
+    top: 15px;
+    right: 18px;
 
-    width: 85px;
-    height: 85px;
+    color: #d9c78f;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 2px solid #f1dfad;
-    border-radius: 50%;
-
-    color: #f1dfad;
-    font-size: 28px;
-
-    background: rgba(8,11,20,0.9);
-
-    box-shadow: 0 0 25px rgba(241,223,173,0.4);
+    opacity: 0.5;
 }
 
-.map-shop span,
-.map-station span {
-    position: absolute;
+.menu-card:hover {
 
-    white-space: nowrap;
+    transform:
+        translateY(-10px);
 
-    font-family: sans-serif;
-    font-size: 12px;
-    letter-spacing: 1px;
+    border-color:
+        rgba(220,200,145,0.45);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.25);
 }
 
-/* 駅 */
-
-.map-station {
-    position: absolute;
-
-    top: 22%;
-    left: 68%;
-
-    color: white;
+.menu-icon {
 
     font-size: 35px;
 
-    text-shadow: 0 0 15px white;
+    margin-bottom: 15px;
 }
 
-.map-station span {
-    top: 35px;
-    left: -20px;
-}
-    /* ===== ACCESS MAP ===== */
+.menu-card h3 {
 
-.stellar-map {
-    position: relative;
-    width: 100%;
-    height: 350px;
-    margin-top: 30px;
+    margin: 0 0 12px;
+
+    font-size: 21px;
+
+    font-weight: normal;
+
+    letter-spacing: 4px;
+}
+
+.menu-card p {
+
+    font-family: sans-serif;
+
+    color: #aaa79f;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+.price {
+
+    font-family:
+        Georgia,
+        serif !important;
+
+    color: #e4cf92 !important;
+
+    font-size: 19px !important;
+
+    letter-spacing: 2px;
+}
+
+/* =====================================================
+   FEATURE
+===================================================== */
+
+.feature {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    min-height: 550px;
+
+    padding: 0;
+
+    max-width: 1300px;
+}
+
+.feature-image {
+
+    min-height: 500px;
+
     overflow: hidden;
+}
+
+.feature-image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: 0.7s;
+}
+
+.feature-image:hover img {
+
+    transform: scale(1.04);
+}
+
+.feature-text {
+
+    padding: 70px 60px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
 
     background:
-        radial-gradient(circle at 15% 20%, rgba(255,255,255,0.5) 1px, transparent 2px),
-        radial-gradient(circle at 75% 30%, rgba(255,255,255,0.4) 1px, transparent 2px),
-        radial-gradient(circle at 45% 75%, rgba(255,255,255,0.5) 1px, transparent 2px),
-        #10182c;
+        rgba(255,255,255,0.035);
+}
 
-    border: 1px solid rgba(255,255,255,0.2);
+.feature-label {
+
+    color: #d8c48e;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 18px;
+}
+
+.feature-text h2 {
+
+    font-size: 38px;
+
+    font-weight: normal;
+
+    letter-spacing: 6px;
+
+    margin: 0 0 25px;
+}
+
+.feature-text p {
+
+    font-family: sans-serif;
+
+    line-height: 2;
+
+    color: #c2beb4;
+
+    font-size: 14px;
+}
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+.gallery {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.gallery-item {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    min-height: 330px;
+}
+
+.gallery-item.large {
+
+    grid-column: span 2;
+
+    min-height: 520px;
+}
+
+.gallery-item img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    filter:
+        brightness(0.82);
+
+    transition:
+        transform 0.7s,
+        filter 0.7s;
+}
+
+.gallery-item:hover img {
+
+    transform: scale(1.05);
+
+    filter:
+        brightness(1);
+}
+
+.gallery-caption {
+
+    position: absolute;
+
+    left: 25px;
+    bottom: 20px;
+
+    padding: 9px 15px;
+
+    background:
+        rgba(0,0,0,0.55);
+
+    backdrop-filter: blur(8px);
+
+    border:
+        1px solid rgba(255,255,255,0.2);
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+#about {
+
+    text-align: center;
+}
+
+.about-box {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    padding: 60px 40px;
+
+    border-top:
+        1px solid rgba(216,196,142,0.35);
+
+    border-bottom:
+        1px solid rgba(216,196,142,0.35);
+
+    position: relative;
+}
+
+.about-box::before {
+
+    content: "✦";
+
+    position: absolute;
+
+    top: -12px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    background: #050711;
+
+    padding: 0 15px;
+
+    color: #d8c48e;
+}
+
+.about-lead {
+
+    font-size: 24px;
+
+    letter-spacing: 4px;
+
+    line-height: 2;
+
+    margin: 0 0 30px;
+}
+
+.about-text {
+
+    font-family: sans-serif;
+
+    line-height: 2.3;
+
+    color: #bbb8b0;
+
+    font-size: 14px;
+}
+
+/* =====================================================
+   ACCESS
+===================================================== */
+
+#access {
+
+    max-width: none;
+
+    background:
+        rgba(255,255,255,0.025);
+}
+
+.access-inner {
+
+    max-width: 1050px;
+
+    margin: auto;
+}
+
+.access-content {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1.3fr;
+
+    gap: 35px;
+}
+
+.access-box {
+
+    padding: 40px;
+
+    background:
+        rgba(255,255,255,0.055);
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
     border-radius: 18px;
 }
 
-.map-road {
-    position: absolute;
-    background: rgba(255,255,255,0.12);
-}
+.access-box h3 {
 
-.road1 {
-    width: 120%;
-    height: 45px;
-    top: 45%;
-    left: -10%;
-    transform: rotate(-12deg);
-}
+    margin-top: 0;
 
-.road2 {
-    width: 45px;
-    height: 120%;
-    top: -10%;
-    left: 55%;
-    transform: rotate(18deg);
-}
+    font-size: 20px;
 
-.road3 {
-    width: 100%;
-    height: 25px;
-    top: 20%;
-    left: 0;
-    transform: rotate(25deg);
-}
-
-.map-shop {
-    position: absolute;
-    top: 48%;
-    left: 30%;
-
-    width: 85px;
-    height: 85px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 2px solid #f1dfad;
-    border-radius: 50%;
-
-    color: #f1dfad;
-    font-size: 28px;
-
-    background: rgba(8,11,20,0.9);
-
-    box-shadow: 0 0 25px rgba(241,223,173,0.4);
-}
-
-.map-shop span,
-.map-station span {
-    position: absolute;
-    white-space: nowrap;
-
-    font-family: sans-serif;
-    font-size: 12px;
-    letter-spacing: 1px;
-}
-
-.map-station {
-    position: absolute;
-    top: 22%;
-    left: 68%;
-
-    color: white;
-    font-size: 35px;
-
-    text-shadow: 0 0 15px white;
-}
-
-.map-station span {
-    top: 35px;
-    left: -20px;
-}
-  /* ===== LOGO ===== */
-
-.logo {
-    margin: 0 0 15px;
-    text-align: center;
-    font-size: 34px;
-    letter-spacing: 8px;
     font-weight: normal;
 
-    color: #f1dfad;
-
-    text-shadow:
-        0 0 10px rgba(241,223,173,0.3),
-        0 0 25px rgba(255,255,255,0.15);
+    letter-spacing: 4px;
 }
 
-.logo span {
-    display: block;
-    margin-bottom: 3px;
+.access-info {
 
     font-family: sans-serif;
-    font-size: 10px;
-    letter-spacing: 5px;
 
-    color: #c8c4ba;
-}  
+    color: #c6c2b8;
+
+    line-height: 2.2;
+
+    font-size: 14px;
+}
+
+.address {
+
+    color: #ead7a2;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+.map {
+
+    min-height: 400px;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+}
+
+.map iframe {
+
+    width: 100%;
+    height: 100%;
+
+    min-height: 400px;
+
+    border: 0;
+
+    filter:
+        grayscale(0.25)
+        brightness(0.8);
+}
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact {
+
+    text-align: center;
+
+    max-width: 800px;
+}
+
+.contact-text {
+
+    font-family: sans-serif;
+
+    color: #aaa79f;
+
+    line-height: 2;
+
+    margin-bottom: 35px;
+}
+
+.contact-button {
+
+    display: inline-block;
+
+    padding: 16px 42px;
+
+    border:
+        1px solid #d8c48e;
+
+    border-radius: 40px;
+
+    text-decoration: none;
+
+    color: #ead7a2;
+
+    letter-spacing: 3px;
+
+    transition: 0.3s;
+}
+
+.contact-button:hover {
+
+    background: #ead7a2;
+
+    color: #050711;
+
+    transform: translateY(-3px);
+}
+
+/* =====================================================
+   BGM
+===================================================== */
+
+.bgm-button {
+
+    position: fixed;
+
+    right: 20px;
+    bottom: 20px;
+
+    z-index: 90;
+
+    width: 52px;
+    height: 52px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(220,200,145,0.6);
+
+    background:
+        rgba(5,7,17,0.85);
+
+    color: #ead7a2;
+
+    font-size: 19px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.3s;
+}
+
+.bgm-button:hover {
+
+    transform:
+        scale(1.08);
+
+    box-shadow:
+        0 0 25px rgba(220,200,145,0.25);
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    padding: 60px 20px;
+
+    text-align: center;
+
+    background: #020309;
+
+    border-top:
+        1px solid rgba(255,255,255,0.08);
+}
+
+.footer-logo {
+
+    font-size: 25px;
+
+    letter-spacing: 7px;
+
+    color: #e8dfc8;
+}
+
+.footer-star {
+
+    color: #d8c48e;
+
+    margin: 15px 0;
+}
+
+footer p {
+
+    font-family: sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #777;
+}
+
+/* =====================================================
+   フワッと表示
+===================================================== */
+
+.fade-up {
+
+    opacity: 0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.fade-up.show {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+/* =====================================================
+   スマホ
+===================================================== */
+
+@media (max-width: 800px) {
+
+    header {
+
+        padding: 14px 18px;
+    }
+
+    .header-inner {
+
+        position: relative;
+    }
+
+    .logo-text {
+
+        font-size: 18px;
+
+        letter-spacing: 4px;
+    }
+
+    .menu-button {
+
+        display: block;
+    }
+
+    nav {
+
+        position: absolute;
+
+        top: 58px;
+
+        left: 0;
+        right: 0;
+
+        display: none;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        background:
+            rgba(4,6,15,0.96);
+
+        backdrop-filter: blur(15px);
+
+        border:
+            1px solid rgba(255,255,255,0.1);
+
+        border-radius: 0 0 15px 15px;
+
+        overflow: hidden;
+    }
+
+    nav.open {
+
+        display: flex;
+    }
+
+    nav a {
+
+        padding: 18px;
+
+        text-align: center;
+
+        border-bottom:
+            1px solid rgba(255,255,255,0.08);
+
+        font-size: 12px;
+    }
+
+    .hero {
+
+        min-height: 650px;
+    }
+
+    .hero h1 {
+
+        font-size: 58px;
+
+        letter-spacing: 8px;
+    }
+
+    .hero-small {
+
+        font-size: 10px;
+
+        letter-spacing: 4px;
+    }
+
+    .hero p {
+
+        font-size: 13px;
+
+        letter-spacing: 3px;
+    }
+
+    section {
+
+        padding:
+            80px 18px;
+    }
+
+    .section-title {
+
+        letter-spacing: 5px;
+
+        margin-bottom: 45px;
+    }
+
+    .menu-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .feature {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .feature-image {
+
+        min-height: 350px;
+    }
+
+    .feature-text {
+
+        padding: 50px 30px;
+    }
+
+    .feature-text h2 {
+
+        font-size: 30px;
+
+        letter-spacing: 4px;
+    }
+
+    .gallery {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .gallery-item.large {
+
+        grid-column: span 1;
+
+        min-height: 350px;
+    }
+
+    .gallery-item {
+
+        min-height: 270px;
+    }
+
+    .about-box {
+
+        padding: 45px 20px;
+    }
+
+    .about-lead {
+
+        font-size: 19px;
+
+        letter-spacing: 2px;
+    }
+
+    .access-content {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .map {
+
+        min-height: 350px;
+    }
+
+    .map iframe {
+
+        min-height: 350px;
+    }
+}
+
 </style>
 </head>
 
+
 <body>
 
-<header>
-<h1 class="logo">
-    <span>✦ CAFE ✦</span>
-    STELLAR
-</h1>
 
-    <nav>
-        <a href="#menu">MENU</a>
-        <a href="#gallery">GALLERY</a>
-        <a href="#about">ABOUT</a>
-        <a href="#access">ACCESS</a>
-        <a href="#contact">CONTACT</a>
-    </nav>
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+<div class="header-inner">
+
+<a href="#top" class="logo">
+
+<span class="logo-star">✦</span>
+
+<span class="logo-text">
+CAFE STELLAR
+</span>
+
+</a>
+
+
+<button
+class="menu-button"
+onclick="toggleMenu()"
+aria-label="メニュー">
+☰
+</button>
+
+
+<nav id="nav">
+
+<a href="#menu">MENU</a>
+
+<a href="#gallery">GALLERY</a>
+
+<a href="#about">ABOUT</a>
+
+<a href="#access">ACCESS</a>
+
+<a href="#contact">CONTACT</a>
+
+</nav>
+
+</div>
+
 </header>
 
-<main>
 
-<!-- ===== HERO ===== -->
+<main id="top">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <section class="hero">
 
-    <img src="IMG_2885.jpeg" alt="CAFE STELLAR 店内">
+<img
+src="IMG_2885.jpeg"
+alt="CAFE STELLAR 店内">
 
-    <div class="hero-content">
+<div class="hero-content">
 
-        <h2>STELLAR</h2>
+<div class="hero-small">
+A SPECIAL MOMENT UNDER THE STARS
+</div>
 
-        <p>星空のような、特別なひととき。</p>
+<h1>STELLAR</h1>
 
-        <a href="#menu">MENUを見る</a>
+<div class="hero-line"></div>
 
-    </div>
+<p>
+星空のような、特別なひととき。
+</p>
+
+<a
+href="#menu"
+class="hero-button">
+MENUを見る
+</a>
+
+</div>
+
+
+<div class="scroll-down">
+SCROLL
+</div>
 
 </section>
 
-<!-- ===== MENU ===== -->
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<section class="intro fade-up">
+
+<h2 class="section-title">
+WELCOME
+<span>ようこそ、STELLARへ</span>
+</h2>
+
+<p class="intro-lead">
+静かな夜に、<br>
+少しだけ特別な時間を。
+</p>
+
+<p class="intro-text">
+
+CAFE STELLARは、<br>
+星空を眺めるようにゆっくりとした時間を<br>
+楽しんでいただけるカフェです。
+
+</p>
+
+</section>
+
+
+<!-- =====================================================
+     MENU
+===================================================== -->
 
 <section id="menu">
 
-    <h2>MENU</h2>
+<div class="menu-inner">
 
-    <div class="menu-card">
-    <img src="IMG_2887.jpeg" alt="コーヒー">
-    <h3>☕ Coffee</h3>
-    <p>こだわりのコーヒー</p>
-    <p class="price">¥450</p>
+<h2 class="section-title fade-up">
+MENU
+<span>おすすめメニュー</span>
+</h2>
+
+<p class="menu-subtitle fade-up">
+CAFE STELLAR ORIGINAL MENU
+</p>
+
+
+<div class="menu-grid">
+
+
+<div class="menu-card fade-up">
+
+<div class="menu-icon">
+☕
 </div>
 
-       <div class="menu-card">
-    <img src="IMG_2886.jpeg" alt="ケーキ">
-    <h3>🍰 Cake</h3>
-    <p>手作りチーズケーキ</p>
-    <p class="price">¥550</p>
+<h3>
+COFFEE
+</h3>
+
+<p>
+こだわりの豆を使用した<br>
+香り豊かなコーヒー
+</p>
+
+<p class="price">
+¥450
+</p>
+
 </div>
 
-      <div class="menu-card">
-    <img src="IMG_2893.jpeg" alt="季節のドリンク">
-    <h3>🥤 Drink</h3>
-    <p>季節のドリンク</p>
-    <p class="price">¥500</p>
+
+<div class="menu-card fade-up">
+
+<div class="menu-icon">
+🍰
 </div>
+
+<h3>
+CAKE
+</h3>
+
+<p>
+コーヒーとの相性を考えた<br>
+手作りケーキ
+</p>
+
+<p class="price">
+¥550
+</p>
+
+</div>
+
+
+<div class="menu-card fade-up">
+
+<div class="menu-icon">
+🥤
+</div>
+
+<h3>
+DRINK
+</h3>
+
+<p>
+季節に合わせて楽しめる<br>
+おすすめドリンク
+</p>
+
+<p class="price">
+¥500
+</p>
+
+</div>
+
+
+</div>
+
 </div>
 
 </section>
 
-<!-- ===== GALLERY ===== -->
+
+<!-- =====================================================
+     FEATURE
+===================================================== -->
+
+<section class="feature fade-up">
+
+<div class="feature-image">
+
+<img
+src="IMG_2886.jpeg"
+alt="CAFE STELLARのケーキ">
+
+</div>
+
+
+<div class="feature-text">
+
+<div class="feature-label">
+STELLAR SWEETS
+</div>
+
+<h2>
+SPECIAL CAKE
+</h2>
+
+<p>
+
+ひとつひとつ丁寧に仕上げた<br>
+CAFE STELLARおすすめのケーキ。
+
+</p>
+
+<p>
+
+甘いスイーツと香り高いコーヒー。<br>
+ゆっくりとした時間をお楽しみください。
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     GALLERY
+===================================================== -->
 
 <section id="gallery">
 
-    <h2>GALLERY</h2>
+<h2 class="section-title fade-up">
+GALLERY
+<span>店内・メニュー</span>
+</h2>
 
-    <div class="gallery">
 
-        <img class="large"
-             src="IMG_2885.jpeg"
-             alt="CAFE STELLARの店内">
+<div class="gallery">
 
-        <img src="IMG_2886.jpeg"
-             alt="CAFE STELLARのケーキ">
 
-        <img src="IMG_2887.jpeg"
-             alt="CAFE STELLARのコーヒー">
+<div class="gallery-item large fade-up">
 
-    </div>
+<img
+src="IMG_2885.jpeg"
+alt="CAFE STELLAR 店内">
+
+<div class="gallery-caption">
+CAFE STELLAR INTERIOR
+</div>
+
+</div>
+
+
+<div class="gallery-item fade-up">
+
+<img
+src="IMG_2886.jpeg"
+alt="CAFE STELLAR ケーキ">
+
+<div class="gallery-caption">
+CAKE
+</div>
+
+</div>
+
+
+<div class="gallery-item fade-up">
+
+<img
+src="IMG_2887.jpeg"
+alt="CAFE STELLAR コーヒー">
+
+<div class="gallery-caption">
+COFFEE
+</div>
+
+</div>
+
+
+<div class="gallery-item fade-up">
+
+<img
+src="IMG_2893.jpeg"
+alt="CAFE STELLAR ドリンク">
+
+<div class="gallery-caption">
+DRINK
+</div>
+
+</div>
+
+
+<div class="gallery-item fade-up">
+
+<img
+src="IMG_2886.jpeg"
+alt="CAFE STELLAR スイーツ">
+
+<div class="gallery-caption">
+SWEETS
+</div>
+
+</div>
+
+
+</div>
 
 </section>
 
-<!-- ===== ABOUT ===== -->
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
 
 <section id="about">
 
-    <h2>ABOUT</h2>
+<h2 class="section-title fade-up">
+ABOUT
+<span>CAFE STELLARについて</span>
+</h2>
 
-    <div class="about-text">
 
-        <p>
-            CAFE STELLARは、<br>
-            「少しだけ特別な時間」を楽しめるカフェです。
-        </p>
+<div class="about-box fade-up">
 
-        <p>
-            静かな夜、星を眺めるように、<br>
-            ゆっくりとした時間をお過ごしください。
-        </p>
+<p class="about-lead">
 
-    </div>
+「少しだけ特別な時間」を<br>
+楽しめるカフェ。
+
+</p>
+
+
+<p class="about-text">
+
+CAFE STELLARは、<br>
+日常の中にある小さな幸せを大切にしています。
+
+<br><br>
+
+静かな夜、星を眺めるように。<br>
+お気に入りの一杯とスイーツとともに、<br>
+ゆっくりとした時間をお過ごしください。
+
+</p>
+
+</div>
 
 </section>
 
 
-    <!-- ===== ACCESS ===== -->
+<!-- =====================================================
+     ACCESS
+===================================================== -->
 
 <section id="access">
 
-    <h2>ACCESS</h2>
+<div class="access-inner">
 
-    <div class="access-box">
+<h2 class="section-title fade-up">
+ACCESS
+<span>アクセス</span>
+</h2>
 
-        <p>📍 東京都星空区天の川8-1-8</p>
 
-        <p>営業時間：10:00〜19:00</p>
+<div class="access-content">
 
-        <p>最寄り駅：STELLAR駅から徒歩5分</p>
 
-        <div class="stellar-map">
+<div class="access-box fade-up">
 
-            <div class="map-road road1"></div>
-            <div class="map-road road2"></div>
-            <div class="map-road road3"></div>
+<h3>
+CAFE STELLAR
+</h3>
 
-            <div class="map-shop">
-                ★
-                <span>CAFE STELLAR</span>
-            </div>
+<div class="access-info">
 
-            <div class="map-station">
-                ●
-                <span>STELLAR駅</span>
-            </div>
+<p class="address">
+〒000-0000<br>
+東京都星空区天の川8-1 -8
+</p>
 
-        </div>
+<p>
+営業時間<br>
+10:00〜19:00
+</p>
 
-    </div>
+<p>
+定休日<br>
+不定休
+</p>
+
+<p>
+最寄り駅から徒歩5分
+</p>
+
+</div>
+
+</div>
+
+
+<div class="map fade-up">
+
+<iframe
+src="https://www.google.com/maps?q=東京都星空区天の川8-1-8&output=embed"
+loading="lazy"
+allowfullscreen>
+</iframe>
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
-<!-- ===== CONTACT ===== -->
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
 
 <section id="contact" class="contact">
 
-    <h2>CONTACT</h2>
+<h2 class="section-title fade-up">
+CONTACT
+<span>お問い合わせ</span>
+</h2>
 
-    <p>ご予約・お問い合わせはこちら</p>
 
-    <a href="mailto:example@example.com">
-        お問い合わせ
-    </a>
+<p class="contact-text fade-up">
+
+ご予約・お問い合わせは<br>
+こちらからお願いいたします。
+
+</p>
+
+
+<a
+href="mailto:example@example.com"
+class="contact-button fade-up">
+
+お問い合わせ
+
+</a>
 
 </section>
 
+
 </main>
 
+
+<!-- =====================================================
+     BGM
+===================================================== -->
+
+<audio id="bgm" loop>
+
+<source
+src="birthday.mp3"
+type="audio/mpeg">
+
+</audio>
+
+
+<button
+class="bgm-button"
+id="bgmButton"
+onclick="toggleBGM()"
+aria-label="BGM">
+
+♪ 
+
+</button>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
-    <p>&copy; CAFE STELLAR</p>
+
+<div class="footer-logo">
+✦ CAFE STELLAR ✦
+</div>
+
+<div class="footer-star">
+✧　⋆　✦　⋆　✧
+</div>
+
+<p>
+© CAFE STELLAR. ALL RIGHTS RESERVED.
+</p>
+
 </footer>
+
+
 <script>
-const sections = document.querySelectorAll("section");
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-        }
+/* =====================================================
+   スマホメニュー
+===================================================== */
+
+function toggleMenu() {
+
+    const nav =
+        document.getElementById("nav");
+
+    nav.classList.toggle("open");
+
+}
+
+
+/* メニューをクリックしたら閉じる */
+
+document
+    .querySelectorAll("nav a")
+    .forEach(function(link) {
+
+        link.addEventListener(
+            "click",
+            function() {
+
+                document
+                    .getElementById("nav")
+                    .classList.remove("open");
+
+            }
+        );
+
     });
-}, {
-    threshold: 0.15
-});
 
-sections.forEach((section) => {
-    section.classList.add("fade");
-    observer.observe(section);
-});
+
+/* =====================================================
+   スクロールふわっと表示
+===================================================== */
+
+const fadeElements =
+    document.querySelectorAll(".fade-up");
+
+
+const observer =
+    new IntersectionObserver(
+        function(entries) {
+
+            entries.forEach(
+                function(entry) {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target
+                            .classList
+                            .add("show");
+
+                        observer
+                            .unobserve(
+                                entry.target
+                            );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+
+fadeElements.forEach(
+    function(element) {
+
+        observer.observe(element);
+
+    }
+);
+
+
+/* =====================================================
+   BGM
+===================================================== */
+
+const bgm =
+    document.getElementById("bgm");
+
+const bgmButton =
+    document.getElementById("bgmButton");
+
+
+let playing = false;
+
+
+function toggleBGM() {
+
+    if (playing) {
+
+        bgm.pause();
+
+        bgmButton.textContent = "♪";
+
+        playing = false;
+
+    } else {
+
+        bgm.play()
+            .then(function() {
+
+                bgmButton.textContent = "♫";
+
+                playing = true;
+
+            })
+            .catch(function() {
+
+                alert(
+                    "BGMを再生するには、もう一度ボタンを押してください。"
+                );
+
+            });
+
+    }
+
+}
+
+
+/* =====================================================
+   ヘッダーのスクロール演出
+===================================================== */
+
+window.addEventListener(
+    "scroll",
+    function() {
+
+        const header =
+            document.querySelector("header");
+
+        if (window.scrollY > 80) {
+
+            header.style.padding =
+                "12px 30px";
+
+        } else {
+
+            header.style.padding =
+                "18px 30px";
+
+        }
+
+    }
+);
+
 </script>
+
+
 </body>
 </html>
